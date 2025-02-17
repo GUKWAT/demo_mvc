@@ -117,7 +117,7 @@ class UserAuthController
                 'user' => [
                     'given_name' => $givenName,
                     'family_name' => $familyName,
-                    'nick_name' => $nickName,
+                    'nickname' => $nickName,
                     'email' => $email,
                 ]
             ]);
@@ -149,7 +149,7 @@ class UserAuthController
             'updated_at' => $updatedAt
         ];
 
-        $this->db->query('INSERT INTO users (given_name, family_name, nick_name, email, user_password, updated_at) VALUES (:given_name, :family_name, :nick_name, :email, :password, :updated_at)', $params);
+        $this->db->query('INSERT INTO users (given_name, family_name, nickname, email, user_password, updated_at) VALUES (:given_name, :family_name, :nickname, :email, :password, :updated_at)', $params);
 
         // Get new user ID
         $userId = $this->db->conn->lastInsertId();
@@ -239,7 +239,7 @@ class UserAuthController
             'id' => $user->id,
             'given_name' => $user->given_name,
             'family_name' => $user->family_name,
-            'nick_name' => $user->nick_name,
+            'nickname' => $user->nickname,
             'email' => $user->email,
         ]);
 

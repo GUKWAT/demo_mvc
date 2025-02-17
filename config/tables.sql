@@ -44,7 +44,7 @@ CREATE TABLE `demo_php_mvc_jokes`.`jokes`
     `tags`        VARCHAR(255) NULL     DEFAULT NULL,
     `author_id`   BIGINT UNSIGNED       DEFAULT 1,
     `created_at`  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    `updated_at`  DATETIME     NULL     DEFAULT NULL,
 
     PRIMARY KEY (`id`),
     FULLTEXT `joke_text` (`joke`),
