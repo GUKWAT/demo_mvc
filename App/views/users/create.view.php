@@ -8,14 +8,14 @@
  *
  * Filename:        index.view.php
  * Location:        ${FILE_LOCATION}
- * Project:         XXX-PHP-MVC-Jokes
+ * Project:         demo-PHP-MVC-Jokes
  * Date Created:    DD/MM/YYYY
  *
  * Author:          YOUR NAME <STUDENT_ID@tafe.wa.edu.au>
  *
  */
 
-$pageTitle = "Add | Users | XXX-MVC-Jokes";
+$pageTitle = "Add | Users | demo-MVC-Jokes";
 
 loadPartial("header", ["pageTitle"=>$pageTitle]);
 loadPartial('navigation');
@@ -58,6 +58,14 @@ loadPartial('navigation');
                            class="w-full px-4 py-2 border border-b-zinc-300 rounded focus:outline-none"
                            value="<?= $user['family_name'] ?? '' ?>"/>
                 </section>
+                <section class="mb-4">
+                    <label for="NickName" class="mt-4 pb-1">Nick Name:</label>
+                    <input type="text" id="NickName"
+                           name="nick_name" placeholder="Nick Name"
+                           class="w-full px-4 py-2 border border-b-zinc-300 rounded focus:outline-none"
+                           value="<?= $user['nick_name'] ?? '' ?>"/>
+                </section>
+
 
                 <section class="mb-4">
                     <label for="Email" class="mt-4 pb-1">Email:</label>

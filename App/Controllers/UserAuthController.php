@@ -7,7 +7,7 @@
  *
  * Filename:        UserAuthController.php
  * Location:        App/Controllers
- * Project:         XXX-PHP-MVC-Jokes
+ * Project:         demo-PHP-MVC-Jokes
  * Date Created:    DD/MM/YYYY
  *
  * Author:          YOUR NAME <STUDENT_ID@tafe.wa.edu.au>
@@ -74,11 +74,14 @@ class UserAuthController
     {
         $givenName = $_POST['given_name'] ?? null;
         $familyName = $_POST['family_name'] ?? null;
+        $nickName = $_POST['nickname'] ?? $_POST['given_name'];
         $email = $_POST['email'] ?? null;
         $city = $_POST['city'] ?? null;
         $state = $_POST['state'] ?? null;
         $password = $_POST['password'] ?? null;
         $passwordConfirmation = $_POST['password_confirmation'] ?? null;
+        $updatedAt = date('Y-m-d H:i:s');
+
 
         $errors = [];
 
@@ -87,9 +90,14 @@ class UserAuthController
             $errors['email'] = 'Please enter a valid email address';
         }
 
+        if (!Validation::string($nickName, 0, 50)) {
+            $nickName = $givenName ;
+        }
+
         if (!Validation::string($givenName, 2, 50)) {
             $errors['given_name'] = 'Given Name must be between 2 and 50 characters';
         }
+
 
         if (!Validation::string($familyName, 0, 50)) {
             $errors['family_name'] = 'Family Name is optional';
@@ -109,6 +117,7 @@ class UserAuthController
                 'user' => [
                     'given_name' => $givenName,
                     'family_name' => $familyName,
+                    'nick_name' => $nickName,
                     'email' => $email,
                 ]
             ]);
@@ -134,11 +143,13 @@ class UserAuthController
         $params = [
             'given_name' => $givenName,
             'family_name' => $familyName,
+            'nickname' => $nickName,
             'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'updated_at' => $updatedAt
         ];
 
-        $this->db->query('INSERT INTO users (given_name, family_name, email, user_password) VALUES (:given_name, :family_name, :email, :password)', $params);
+        $this->db->query('INSERT INTO users (given_name, family_name, nick_name, email, user_password, updated_at) VALUES (:given_name, :family_name, :nick_name, :email, :password, :updated_at)', $params);
 
         // Get new user ID
         $userId = $this->db->conn->lastInsertId();
@@ -166,7 +177,7 @@ class UserAuthController
         $params = session_get_cookie_params();
         setcookie('PHPSESSID', '', time() - 86400, $params['path'], $params['domain']);
 
-        redirect('/');
+        redirect('/auth/login');
     }
 
     /**
@@ -228,6 +239,7 @@ class UserAuthController
             'id' => $user->id,
             'given_name' => $user->given_name,
             'family_name' => $user->family_name,
+            'nick_name' => $user->nick_name,
             'email' => $user->email,
         ]);
 
