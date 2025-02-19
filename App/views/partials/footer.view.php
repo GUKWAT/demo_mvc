@@ -32,8 +32,8 @@
     <section class="w-1/2 p-8 text-xs">
         <h6 class="font-bold mb-2">Links</h6>
         <ul class=" flex flex-col gap-1">
-            <li><a href="/" class="text-zinc-500 hover:text-white underline underline-offset-2">Register</a></li>
-            <li><a href="/" class="text-zinc-500 hover:text-white underline underline-offset-2">About</a></li>
+            <li><a href="/auth/register" class="text-zinc-500 hover:text-white underline underline-offset-2">Register</a></li>
+            <li><a href="/about" class="text-zinc-500 hover:text-white underline underline-offset-2">About</a></li>
             <li><a href="/" class="text-zinc-500 hover:text-white underline underline-offset-2">Privacy</a></li>
             <li><a href="/" class="text-zinc-500 hover:text-white underline underline-offset-2">Contact Us</a></li>
         </ul>
