@@ -78,13 +78,13 @@ if ($authenticated->isAuthenticated()){
         <?php
         else:
             ?>
-            <p><a href="/"
+            <p><a href="/auth/login"
                   class="pb-2 px-1 text-text-zinc-700-200 hover:text-sky-300
                      border-0 border-b-2 hover:border-b-sky-500
                      transition ease-in-out duration-500">
                     Login
                 </a></p>
-            <p><a href="/"
+            <p><a href="/auth/register"
                   class="pb-2 px-1 text-text-zinc-700-200 hover:text-sky-300
                      border-0 border-b-2 hover:border-b-sky-500
                      transition ease-in-out duration-500">
@@ -94,7 +94,7 @@ if ($authenticated->isAuthenticated()){
         endif;
         ?>
 
-        <form method="GET" action="/" class="block mx-5">
+        <form method="GET" action="" class="block mx-5">
             <input type="text" name="keywords" placeholder="Joke search..."
                    class="w-full md:w-auto px-4 py-2 focus:outline-none"/>
             <button class="w-full md:w-auto

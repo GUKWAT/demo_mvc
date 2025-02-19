@@ -52,7 +52,7 @@ class UserAuthController
      */
     public function login()
     {
-        loadView('usersAuth/login');
+        loadView('users/login');
     }
 
     /**
@@ -62,7 +62,7 @@ class UserAuthController
      */
     public function create()
     {
-        loadView('usersAuth/create');
+        loadView('users/create');
     }
 
     /**
