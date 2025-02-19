@@ -56,7 +56,7 @@ loadPartial('navigation');
                     <section class="mb-4">
                         <label for="Password" class="mt-4 pb-1">Password:</label>
                         <input type="password" id="Password"
-                               name="user_password" placeholder="Password"
+                               name="password" placeholder="Password"
                                class="w-full px-4 py-2 border border-b-zinc-300 rounded focus:outline-none"/>
                     </section>
 
