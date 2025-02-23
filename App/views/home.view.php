@@ -21,9 +21,9 @@ loadPartial('navigation');
         <header class="bg-zinc-700 text-zinc-200 -mx-4 -mt-8 p-8 text-2xl font-bold mb-8">
             <h1>Tadiwanashe's Joke DB</h1>
         </header>
-
+        <?php if (isset($_SESSION['user'])): ?>
         <section class="flex flex-row flex-wrap justify-center my-8 gap-8">
-            <?php if (isset($_SESSION['user'])): ?>
+
 
             <section class="w-1/4 bg-sky-800 text-white shadow rounded p-2 flex flex-row">
                 <h4 class="flex-0 w-1/2 -ml-2 mr-6 bg-sky-400 text-black text-lg p-4 -my-2 rounded-l">
@@ -51,10 +51,10 @@ loadPartial('navigation');
                     <?= $userCount->total ?>
                 </p>
             </section>
-            <?php endif; ?>
+
 
         </section>
-
+        <?php endif; ?>
         <section class="my-8 flex flex-wrap gap-8 justify-center">
 
             <?php if (!empty($randomJoke)): ?>

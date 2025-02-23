@@ -38,7 +38,7 @@ loadPartial('navigation');
             'errors' => $errors ?? []
         ]) ?>
 
-            <form method="POST" action="/users">
+            <form method="POST" action="/auth/register">
 
                 <h2 class="text-2xl font-bold mb-6 text-left text-gray-500">
                     User Information
@@ -62,9 +62,9 @@ loadPartial('navigation');
                 <section class="mb-4">
                     <label for="NickName" class="mt-4 pb-1">Nick Name:</label>
                     <input type="text" id="NickName"
-                           name="nick_name" placeholder="Nick Name"
+                           name="nickname" placeholder="Nick Name"
                            class="w-full px-4 py-2 border border-b-zinc-300 rounded focus:outline-none"
-                           value="<?= $user['nick_name'] ?? '' ?>"/>
+                           value="<?= $user['nickname'] ?? '' ?>"/>
                 </section>
 
 

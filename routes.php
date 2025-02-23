@@ -45,7 +45,7 @@ $router->delete('/users/{id}', 'UserController@destroy', ['auth']);
 /* ----------------------------------------------------------------------------
  * User Authentication Endpoints
  */
-$router->get('/auth/register', 'UserAuthController@create', ['guest']);
+    $router->get('/auth/register', 'UserAuthController@create', ['guest']);
 $router->get('/auth/login', 'UserAuthController@login', ['guest']);
 
 $router->post('/auth/register', 'UserAuthController@store', ['guest']);

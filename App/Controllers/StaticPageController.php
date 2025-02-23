@@ -66,6 +66,6 @@ class StaticPageController
      */
     public function about()
     {
-        // TODO: Crete the method code for the about page
+        loadView('usersAuth/about');
     }
 }

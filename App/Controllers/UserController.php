@@ -45,7 +45,7 @@ class UserController
     // TODO: Create the index method
     public function index()
     {
-        $sql = "SELECT * FROM users ORDER BY given_name, family_name, created_at";
+        $sql = "SELECT * FROM users ORDER BY nickname, email, created_at";
 
         $users = $this->db->query($sql)->fetchAll();
 
@@ -72,7 +72,7 @@ class UserController
         ];
 
 //        $sql = 'SELECT * FROM users WHERE id = :id ';
-        $sql = "SELECT u1.id as id, u1.given_name as given_name, u1.family_name as family_name, u1.email as email,
+        $sql = "SELECT u1.id as id, u1.given_name as given_name, u1.family_name as family_name, u1.nickname as nickname, u1.email as email,
                        u1.user_id as user_id, u1.created_at as created_at, u1.updated_at as updated_at,
                        CONCAT(u2.given_name, ' ', u2.family_name) AS added_by
                 FROM users u1
@@ -105,8 +105,9 @@ class UserController
         $query = "SELECT * FROM users 
                   WHERE given_name LIKE :keywords 
                      OR family_name LIKE :keywords 
+                     OR nickname LIKE :keywords
                      OR email LIKE :keywords 
-                  ORDER BY given_name, family_name ";
+                  ORDER BY given_name, family_name, nickname, email ";
 
         $params = [
             'keywords' => "%{$keywords}%",
@@ -141,7 +142,7 @@ class UserController
      */
     public function store()
     {
-        $allowedFields = ['given_name', 'family_name', 'email', 'user_password', 'confirm_password',];
+        $allowedFields = ['given_name', 'family_name', 'nickname', 'email', 'user_password', 'confirm_password',];
 
         $newUserData = array_intersect_key($_POST, array_flip($allowedFields));
         $newUserData['user_id'] = Session::get('user')['id'];
@@ -366,8 +367,11 @@ class UserController
         // Check if user exists
         if (!$user) {
             ErrorController::notFound('User not found');
-            exit();
+            return;
         }
+
+        $this->db->query('DELETE FROM users WHERE id = :id', $params);
+        redirect('/users');
 
         // Authorisation
         if (!Authorisation::isOwner($user->user_id)) {

@@ -58,25 +58,40 @@ loadPartial('navigation');
 
                 <section class="grow">
                     <h5 class="text-lg font-bold">
+                        Nickname:
+                    </h5>
+                    <p class="grow text-lg text-zinc-600 mb-4">
+                        <?= $user->nickname ?>
+                    </p>
+
+                    <h5 class="text-lg font-bold">
+                        Given Name:
+                    </h5>
+                    <p class="grow text-lg text-zinc-600 mb-4">
+                        <?= $user->given_name ?>
+                    </p>
+
+                    <h5 class="text-lg font-bold">
+                        Family Name:
+                    </h5>
+                    <p class="grow text-lg text-zinc-600 mb-4">
+                        <?= $user->family_name ?>
+                    </p>
+
+                    <h5 class="text-lg font-bold">
+                        Email:
+                    </h5>
+                    <p class="grow text-lg text-zinc-600 mb-4">
+                        <?= $user->email ?>
+                    </p>
+
+                    <h5 class="text-lg font-bold">
                         Joined:
                     </h5>
                     <p class="grow text-lg text-zinc-600 mb-4">
                         <?= $user->created_at ?>
                     </p>
 
-                    <h5 class="text-lg font-bold">
-                        Last Update:
-                    </h5>
-                    <p class="grow text-lg text-zinc-600 mb-6">
-                        <?= $user->updated_at ?? "n/a" ?>
-                    </p>
-
-                    <h5 class="text-lg font-bold">
-                        Added by:
-                    </h5>
-                    <p class="grow text-lg text-zinc-600 mb-6">
-                        <?= $user->added_by ?? "n/a" ?>
-                    </p>
 
                     <?php
                     if (Framework\Authorisation::isOwner($user->user_id) || Framework\Authorisation::isUser($user->id)) :

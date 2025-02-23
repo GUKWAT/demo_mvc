@@ -52,7 +52,7 @@ class UserAuthController
      */
     public function login()
     {
-        loadView('users/login');
+        loadView('usersAuth/login');
     }
 
     /**
@@ -62,7 +62,7 @@ class UserAuthController
      */
     public function create()
     {
-        loadView('users/create');
+        loadView('usersAuth/create');
     }
 
     /**
@@ -76,11 +76,9 @@ class UserAuthController
         $familyName = $_POST['family_name'] ?? null;
         $nickName = $_POST['nickname'] ?? $_POST['given_name'];
         $email = $_POST['email'] ?? null;
-        $city = $_POST['city'] ?? null;
-        $state = $_POST['state'] ?? null;
         $password = $_POST['password'] ?? null;
         $passwordConfirmation = $_POST['password_confirmation'] ?? null;
-        $updatedAt = date('Y-m-d H:i:s');
+
 
 
         $errors = [];
@@ -90,7 +88,7 @@ class UserAuthController
             $errors['email'] = 'Please enter a valid email address';
         }
 
-        if (!Validation::string($nickName, 0, 50)) {
+        if (!Validation::string($nickName, 1, 50)) {
             $nickName = $givenName ;
         }
 
@@ -146,10 +144,11 @@ class UserAuthController
             'nickname' => $nickName,
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
-            'updated_at' => $updatedAt
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        $this->db->query('INSERT INTO users (given_name, family_name, nickname, email, user_password, updated_at) VALUES (:given_name, :family_name, :nickname, :email, :password, :updated_at)', $params);
+        $this->db->query('INSERT INTO users (given_name, family_name, nickname, email, user_password, created_at, updated_at) VALUES (:given_name, :family_name, :nickname, :email, :password, :created_at, :updated_at)', $params);
 
         // Get new user ID
         $userId = $this->db->conn->lastInsertId();
@@ -162,7 +161,7 @@ class UserAuthController
             'email' => $email,
         ]);
 
-        redirect('/');
+        redirect('/auth/login');
     }
 
     /**
@@ -177,7 +176,7 @@ class UserAuthController
         $params = session_get_cookie_params();
         setcookie('PHPSESSID', '', time() - 86400, $params['path'], $params['domain']);
 
-        redirect('/auth/login');
+        redirect('/');
     }
 
     /**
@@ -187,6 +186,7 @@ class UserAuthController
      */
     public function authenticate()
     {
+
         $email = $_POST['email'];
         $password = $_POST['password'];
 
