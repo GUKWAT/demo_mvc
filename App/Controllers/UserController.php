@@ -7,7 +7,7 @@
  * Project:         demo-mvc-jokes
  * Date Created:    6/09/2024
  *
- * Author:          YOUR NAME <STUDENT_ID@tafe.wa.edu.au>
+ * Author:          Tadiwanashe Gukwa <20095319@tafe.wa.edu.au>
  *
  */
 
@@ -45,7 +45,7 @@ class UserController
     // TODO: Create the index method
     public function index()
     {
-        $sql = "SELECT * FROM users ORDER BY nickname, email, created_at";
+        $sql = "SELECT nickname, email, created_at FROM users ORDER BY nickname, email, created_at";
 
         $users = $this->db->query($sql)->fetchAll();
 

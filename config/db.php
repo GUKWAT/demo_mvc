@@ -7,7 +7,7 @@
  * Project:         demo-PHP-MVC-Jokes
  * Date Created:    DD/MM/YYYY
  *
- * Author:          YOUR NAME <StudentID@tafe.wa.edu.au>
+ * Author:          Tadiwanashe Gukwa <StudentID@tafe.wa.edu.au>
  *
  */
 

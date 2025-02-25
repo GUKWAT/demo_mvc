@@ -6,12 +6,12 @@
  * MAY BE MORE THAN ONE LINE LONG
  * KEEP LINE LENGTH TO NO MORE THAN 96 CHARACTERS
  *
- * Filename:        index.php
+ * Filename:        index.view.php
  * Location:        ${FILE_LOCATION}
  * Project:         SaaS-FED-Notes
  * Date Created:    DD/MM/YYYY
  *
- * Author:          YOUR NAME <STUDENT_ID@tafe.wa.edu.au>
+ * Author:          Tadiwanashe Gukwa <20095319@tafe.wa.edu.au>
  *
  */
 

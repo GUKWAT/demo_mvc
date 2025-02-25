@@ -15,7 +15,7 @@
  *
  */
 
-$pageTitle = "Show | Users | demo-MVC-Jokes";
+$pageTitle = "Show | Jokes | demo-MVC-Jokes";
 
 loadPartial("header", ["pageTitle" => $pageTitle]);
 loadPartial('navigation');
@@ -26,14 +26,14 @@ loadPartial('navigation');
     <article>
         <header class="bg-zinc-700 text-zinc-200 -mx-4 -mt-8 p-8 mb-8 flex">
 
-            <h1 class="grow text-2xl font-bold ">Users - Detail</h1>
+            <h1 class="grow text-2xl font-bold ">Jokes - Detail</h1>
 
             <p class="text-md flex-0 px-8 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded transition ease-in-out duration-500">
-                <a href="/users/create">Add User</a>
+                <a href="/jokes/create">Add Joke</a>
             </p>
 
-            <form method="GET" action="/users/search" class="block mx-5">
-                <input type="text" name="keywords" placeholder="User search..."
+            <form method="GET" action="/jokes/search" class="block mx-5">
+                <input type="text" name="keywords" placeholder="Joke search..."
                        class="w-full md:w-auto px-4 py-2 focus:outline-none"/>
                 <button class="w-full md:w-auto
                            bg-sky-500 hover:bg-sky-600
@@ -46,59 +46,48 @@ loadPartial('navigation');
 
         </header>
 
-            <?= loadPartial('message') ?>
+        <?= loadPartial('message') ?>
 
         <section class="w-1/2 mx-auto bg-white shadow rounded p-4 flex flex-col">
 
             <h4 class="-mx-4 bg-zinc-700 text-zinc-200 text-2xl p-4 -mt-4 mb-4 rounded-t flex-0 flex justify-between">
-                <?= $user->given_name ?> <?= $user->family_name ?>
+                <?= $joke -> tags ?>
             </h4>
 
             <section class="flex-grow flex flex-row">
 
                 <section class="grow">
                     <h5 class="text-lg font-bold">
-                        Nickname:
+                        Title:
                     </h5>
                     <p class="grow text-lg text-zinc-600 mb-4">
-                        <?= $user->nickname ?>
+                        <?= $joke->joke ?>
                     </p>
 
                     <h5 class="text-lg font-bold">
-                        Given Name:
+                        Category:
                     </h5>
                     <p class="grow text-lg text-zinc-600 mb-4">
-                        <?= $user->given_name ?>
+                        <?= $joke->category_id ?>
                     </p>
 
                     <h5 class="text-lg font-bold">
-                        Family Name:
+                        Tags:
                     </h5>
                     <p class="grow text-lg text-zinc-600 mb-4">
-                        <?= $user->family_name ?>
+                        <?= $joke->tags ?>
                     </p>
 
                     <h5 class="text-lg font-bold">
-                        Email:
+                            Author:
                     </h5>
                     <p class="grow text-lg text-zinc-600 mb-4">
-                        <?= $user->email ?>
+                        <?= $joke->author_id ?>
                     </p>
 
-                    <h5 class="text-lg font-bold">
-                        Joined:
-                    </h5>
-                    <p class="grow text-lg text-zinc-600 mb-4">
-                        <?= $user->created_at ?>
-                    </p>
-
-
-                    <?php
-                    if (Framework\Authorisation::isOwner($user->user_id) || Framework\Authorisation::isUser($user->id)) :
-                        ?>
                         <form method="POST"
                               class="border-0 border-t-1 border-zinc-300 text-lg flex flex-row">
-                            <a href="/users/edit/<?= $user->id ?>"
+                            <a href="/jokes/edit/<?= $joke->id ?>"
                                class="px-16 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded transition ease-in-out duration-500">
                                 Edit
                             </a>
@@ -110,9 +99,6 @@ loadPartial('navigation');
                             </button>
                         </form>
 
-                    <?php
-                    endif;
-                    ?>
                 </section>
 
                 <img class="object-cover"

@@ -7,7 +7,7 @@
  * Project:         SaaS-FED-Notes
  * Date Created:    DD/MM/YYYY
  *
- * Author:          YOUR NAME <STUDENT_ID@tafe.wa.edu.au>
+ * Author:          Tadiwanashe Gukwa <20095319@tafe.wa.edu.au>
  *
  */
 
@@ -39,14 +39,17 @@ if ($authenticated->isAuthenticated()){
                      transition ease-in-out duration-500">
                 Home
             </a></p>
+        <?php if ($authenticated->isAuthenticated()): ?>
 
         <!-- Show these when visitor is registered & authenticated -->
-        <p><a href="/"
+        <p><a href="/jokes"
               class="pb-2 px-1 text-text-zinc-700-200 hover:text-sky-300
                      border-0 border-b-2 hover:border-b-sky-500
                      transition ease-in-out duration-500">
                 Jokes
             </a></p>
+        <?php endif; ?>
+
 
         <p><a href="/"
               class="pb-2 px-1 text-text-zinc-700-200 hover:text-sky-300
